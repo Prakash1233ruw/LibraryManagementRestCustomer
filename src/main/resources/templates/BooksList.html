@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Library Directory</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>Library Directory</h3>
+		<hr>
+
+		<!-- Add a button -->
+		
+        <a th:href="@{/oneBook}" class="btn btn-primary">Add Book</a>
+
+        <a th:href="@{/searchGenre}" class="btn btn-primary">Search books by Genre</a>  <hr>
+
+       
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Book ID</th>
+					<th>ISBN</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Genre</th>
+					<th>RemoveBook</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="book : ${allBooks}">
+
+					<td th:text="${book.bookId}" />
+					<td th:text="${book.ISBN}" />
+					<td th:text="${book.title}" />
+                    <td th:text="${book.author}" />
+                    <td th:text="${book.genre}" />
+					<td>
+						<div class="row">
+
+							<!-- <div class="col-small">
+								Add "update" button/link
+								<form action="#" th:action="@{/updateForm}"
+									method="GET">
+
+									<input type="hidden" name="customerId"
+										th:value="${tempCustomer.id}" />
+									<button type="submit" class="btn btn-info btn-sm ml-3 mr-1">Update Data</button>
+
+								</form>
+							</div> -->
+
+							<div class="col-small">
+								
+								<form action="#" th:action="@{/deleteBook}"
+									method="">
+
+									<input type="hidden" name="bookId"
+										th:value="${book.bookId}" />
+									<button type="submit" class="btn btn-danger btn-sm"
+										onclick="if (!(confirm('Are you sure you want to delete this Book?'))) return false">
+										Remove</button>
+
+								</form>
+							</div>
+						</div>
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+   <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Save Customer</title>
+</head>
+
+<body>
+
+	<div class="container">
+	 <a th:href="@{/getAll}" class="btn btn-primary">Home</a>
+	 <hr>
+        <h4>Search Books By Genre</h4>
+        	<form  th:action="@{/search}" >
+        
+    	<p>Enter Genre <input type="text" name="genre" /></p>
+        
+        
+        <p><input type="submit" value="Submit" /></p>
+</form>
+<hr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Book ID</th>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${genreData}">
+                <td th:text="${book.bookId}"></td>
+                <td th:text="${book.ISBN}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.genre}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+	</div>
+</body>
+
+</html>
